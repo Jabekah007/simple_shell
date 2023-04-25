@@ -1,0 +1,43 @@
+.TH man 1 "25 April 2023" "0.1" "simple_shell man page"
+
+.SH NAME
+.B simple_shell
+This is a simple shell program written in C that enables interaction with a Linux operating system.
+
+.SH SYNOPSIS
+ hsh [options] [file]
+
+.SH DESCRIPTION
+A shell is a user interface in UNIX that interacts with the operating system by interpreting and executing the commands entered by a user.
+It is often referred to as a command interpreter and typically presents an interface with a specific command syntax.
+
+
+.B Overview
+The simple shell is a program that can read lines from either a file or the terminal, interpret them, and execute other commands. It is typically launched when
+a user logs into a system and offers numerous features to facilitate interactive use. One of its advantages is that the interpretative language is shared by both
+interactive and non-interactive use (such as shell scripts). This means that commands can be entered directly into the simple shell while it is running, or they
+can be written to a file and executed by the simple shell directly.
+
+.SH Return Value
+The simple shell program returns 0 upon success and a non-zero value upon failure.
+
+.SH PATH
+It searches for executables in all directories listed in the PATH environment variable.
+
+.SH
+
+.SH OPTIONS
+.B simple_shell
+ After entering the main command, you can add command options by typing a space followed by a '-' symbol.
+
+.SH EXAMPLE
+To display hidden files type
+[command] [options]
+$ ls -a
+
+.SH BUGS
+A single space is required after each argument.
+
+
+.SH AUTHOR
+Justice Abeka, Benard Mutinda.
