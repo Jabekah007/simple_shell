@@ -1,7 +1,8 @@
 #include "shell.h"
 
 /**
- * _strncpy - copies a specified number of characters from a source string to a destination string
+ * _strncpy - copies a specified number of characters
+ * from a source string to a destination string
  * @dest: pointer to the destination string
  * @src: pointer to the source string
  * @n: maximum number of characters to be copied
@@ -13,7 +14,7 @@ char *_strncpy(char *dest, char *src, int n)
 	char *s = dest;
 
 	a = 0;
-	while (src[i] != '\0' && a < n - 1)
+	while (src[a] != '\0' && a < n - 1)
 	{
 		dest[a] = src[a];
 		a++;
@@ -31,12 +32,12 @@ char *_strncpy(char *dest, char *src, int n)
 }
 
 /**
-
-_strncat - concatenates a specified number of characters from a source string to the end of a destination string
-@dest: pointer to the destination string
-@src: pointer to the source string
-@n: maximum number of characters to be concatenated
-Return: pointer to the destination string
+* _strncat - concatenates a specified number of characters from
+* a source string to the end of a destination string
+* @dest: pointer to the destination string
+* @src: pointer to the source string
+* @n: maximum number of characters to be concatenated
+* Return: pointer to the destination string
 */
 char *_strncat(char *dest, char *src, int n)
 {
@@ -53,19 +54,7 @@ char *_strncat(char *dest, char *src, int n)
 		a++;
 		b++;
 	}
-	
-	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
-	ptr = &buffer[49];
-	*ptr = '\0';
 
-	do	{
-		*--ptr = array[n % base];
-		n /= base;
-	} while (n != 0);
-
-	if (symb)
-		*--ptr = symb;
-	return (ptr);
 
 	if (b < n)
 		dest[a] = '\0';
@@ -76,7 +65,8 @@ char *_strncat(char *dest, char *src, int n)
  * _strchr - locates the first occurrence of a specified character in a string
  * @s: pointer to the string to be searched
  * @c: character to be located
- * Return: a pointer to the located character in the string or NULL if the character is not found
+ * Return: a pointer to the located character in the string or
+ * NULL if the character is not found
  */
 char *_strchr(char *s, char c)
 {
