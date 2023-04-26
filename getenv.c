@@ -73,10 +73,10 @@ int _setenv(info_t *info, char *var, char *value)
 	_strcpy(buf, var);
 	_strcat(buf, "=");
 	_strcat(buf, value);
-	node = info->env;
+	nod = info->env;
 	while (nod)
 	{
-		p = starts_with(nod->str, var);
+		q = starts_with(nod->str, var);
 		if (q && *q == '=')
 		{
 			free(nod->str);

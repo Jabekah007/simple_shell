@@ -117,7 +117,7 @@ char *convert_number(long int num, int base, int flags)
 	} while (n != 0);
 
 	if (symb)
-		*--ptr = symbol;
+		*--ptr = symb;
 	return (ptr);
 }
 

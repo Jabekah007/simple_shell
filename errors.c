@@ -15,7 +15,7 @@ void _eputs(char *str)
 	while (str[j] != '\0')
 	{
 		_eputchar(str[j]);
-		i++;
+		j++;
 	}
 }
 
@@ -81,6 +81,6 @@ int _putsfd(char *str, int fd)
 	{
 		k += _putfd(*str++, fd);
 	}
-	return (i);
+	return (k);
 }
 

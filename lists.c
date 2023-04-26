@@ -53,7 +53,7 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 	if (!new_nd)
 		return (NULL);
 	_memset((void *)new_nd, 0, sizeof(list_t));
-	new_node->num = num;
+	new_nd->num = num;
 	if (str)
 	{
 		new_nd->str = _strdup(str);
@@ -127,7 +127,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
 			free(node);
 			return (1);
 		}
-		i++;
+		j++;
 		prev_node = node;
 		node = node->next;
 	}

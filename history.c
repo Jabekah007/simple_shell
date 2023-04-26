@@ -17,7 +17,7 @@ char *get_history_file(info_t *info)
 	buff = malloc(sizeof(char) * (_strlen(dirr) + _strlen(HIST_FILE) + 2));
 	if (!buff)
 		return (NULL);
-	buf[0] = 0;
+	buff[0] = 0;
 	_strcpy(buff, dirr);
 	_strcat(buff, "/");
 	_strcat(buff, HIST_FILE);
@@ -34,7 +34,7 @@ int write_history(info_t *info)
 {
 	ssize_t ff;
 	char *filename = get_history_file(info);
-	list_t *nod = NULL;
+	list_t *node = NULL;
 
 	if (!filename)
 		return (-1);
@@ -43,7 +43,7 @@ int write_history(info_t *info)
 	free(filename);
 	if (ff == -1)
 		return (-1);
-	for (nod = info->history; node; node = node->next)
+	for (node = info->history; node; node = node->next)
 	{
 		_putsfd(node->str, ff);
 		_putfd('\n', ff);
@@ -85,12 +85,12 @@ int read_history(info_t *info)
 	if (rdlen <= 0)
 		return (free(buf), 0);
 	close(ff);
-	for (i = 0; i < fsize; i++)
-		if (buf[i] == '\n')
+	for (j = 0; j < fsize; j++)
+		if (buf[j] == '\n')
 		{
-			buf[i] = 0;
+			buf[j] = 0;
 			build_history_list(info, buf + last, linecount++);
-			last = i + 1;
+			last = j + 1;
 		}
 	if (last != j)
 		build_history_list(info, buf + last, linecount++);
@@ -139,6 +139,6 @@ int renumber_history(info_t *info)
 		nod->num = j++;
 		nod = nod->next;
 	}
-	return (info->histcount = i);
+	return (info->histcount = j);
 }
 
