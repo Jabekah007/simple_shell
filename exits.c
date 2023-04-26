@@ -1,141 +1,75 @@
 #include "shell.h"
 
 /**
- * _erratoi -it  changes a string to an integer
- * @s: represent string to be converted
- * Return: returns 0 if string has no number, changes number otherwise
- *       -1 on error
+ * _strncpy - copies a specified number of characters from a source string to a destination string
+ * @dest: pointer to the destination string
+ * @src: pointer to the source string
+ * @n: maximum number of characters to be copied
+ * Return: pointer to the destination string
  */
-int _erratoi(char *s)
+char *_strncpy(char *dest, char *src, int n)
 {
-	int h = 0;
-	unsigned long int result = 0;
+	int a, b;
+	char *s = dest;
 
-	if (*s == '+')
-		s++;  /* TODO: why does this make main return 255? */
-	for (h = 0;  s[h] != '\0'; h++)
+	a = 0;
+	while (src[i] != '\0' && a < n - 1)
 	{
-		if (s[h] >= '0' && s[h] <= '9')
+		dest[a] = src[a];
+		a++;
+	}
+	if (a < n)
+	{
+		b = a;
+		while (b < n)
 		{
-			result *= 10;
-			result += (s[h] - '0');
-			if (result > INT_MAX)
-				return (-1);
+			dest[b] = '\0';
+			b++;
 		}
-		else
-			return (-1);
 	}
-	return (result);
+	return (s);
 }
 
 /**
- * print_error - it prints an error message
- * @info: it displays the parameter & return info struct
- * @estr: The string containing specified error type
- * Return: returns 0 if string has no number, changes number otherwise
- * -1 on error
- */
-void print_error(info_t *info, char *estr)
-{
-	_eputs(info->fname);
-	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
-}
 
-/**
- * print_d - This function prints a decimal number (base 10)
- * @input: takes input
- * @fd: this represent filedescriptor
- *
- * Return: prints number of characters
- */
-int print_d(int input, int fd)
+_strncat - concatenates a specified number of characters from a source string to the end of a destination string
+@dest: pointer to the destination string
+@src: pointer to the source string
+@n: maximum number of characters to be concatenated
+Return: pointer to the destination string
+*/
+char *_strncat(char *dest, char *src, int n)
 {
-	int (*__putchar)(char) = _putchar;
-	int v, count = 0;
-	unsigned int _abs_, current;
+	int a, b;
+	char *s = dest;
 
-	if (fd == STDERR_FILENO)
-		__putchar = _eputchar;
-	if (input < 0)
+	a = 0;
+	b = 0;
+	while (dest[a] != '\0')
+		a++;
+	while (src[b] != '\0' && b < n)
 	{
-		_abs_ = -input;
-		__putchar('-');
-		count++;
+		dest[a] = src[b];
+		a++;
+		b++;
 	}
-	else
-		_abs_ = input;
-	current = _abs_;
-	for (v = 1000000000; v > 1; v /= 10)
-	{
-		if (_abs_ / v)
-		{
-			__putchar('0' + current / v);
-			count++;
-		}
-		current %= v;
-	}
-	__putchar('0' + current);
-	count++;
-
-	return (count);
+	if (b < n)
+		dest[a] = '\0';
+	return (s);
 }
 
 /**
- * convert_number - it converter function, a clone of itoa
- * @num: Represent number
- * @base: Represent base
- * @flags: It takes argument flags
- *
- * Return: returns a string
+ * _strchr - locates the first occurrence of a specified character in a string
+ * @s: pointer to the string to be searched
+ * @c: character to be located
+ * Return: a pointer to the located character in the string or NULL if the character is not found
  */
-char *convert_number(long int num, int base, int flags)
+char *_strchr(char *s, char c)
 {
-	static char *array;
-	static char buffer[50];
-	char symb = 0;
-	char *ptr;
-	unsigned long n = num;
+	do {
+		if (*s == c)
+			return (s);
+	} while (*s++ != '\0');
 
-	if (!(flags & CONVERT_UNSIGNED) && num < 0)
-	{
-		n = -num;
-		symb = '-';
-
-	}
-	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
-	ptr = &buffer[49];
-	*ptr = '\0';
-
-	do	{
-		*--ptr = array[n % base];
-		n /= base;
-	} while (n != 0);
-
-	if (symb)
-		*--ptr = symbol;
-	return (ptr);
+	return (NULL);
 }
-
-/**
- * remove_comments -It  function replaces first instance of '#' with '\0'
- * @buf: It address of the string to modify
- *
- * Return: returns  0;
- */
-void remove_comments(char *buf)
-{
-	int b;
-
-	for (b = 0; buf[b] != '\0'; b++)
-		if (buf[b] == '#' && (!b || buf[b - 1] == ' '))
-		{
-			buf[b] = '\0';
-			break;
-		}
-}
-
