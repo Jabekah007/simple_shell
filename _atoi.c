@@ -1,4 +1,6 @@
-/**
+#include "shell.h"
+
+/*i*
  * is_delim - This checks if character is a delimeter
  * @c: it is use to check char
  * @delim: this is use to represent delimeter string
