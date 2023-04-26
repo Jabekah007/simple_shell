@@ -53,7 +53,7 @@ char *_strncat(char *dest, char *src, int n)
 		a++;
 		b++;
 	}
-<<<<<<< HEAD
+	
 	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
@@ -66,11 +66,10 @@ char *_strncat(char *dest, char *src, int n)
 	if (symb)
 		*--ptr = symb;
 	return (ptr);
-=======
+
 	if (b < n)
 		dest[a] = '\0';
 	return (s);
->>>>>>> 1b49b09ec478b7a2d84093e5e61cb16fcedf84f5
 }
 
 /**
